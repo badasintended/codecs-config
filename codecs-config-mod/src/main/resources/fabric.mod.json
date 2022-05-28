@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id"           : "codecs-config",
+  "version"      : "${version}",
+  "name"         : "Codecs Config",
+  "description"  : "Yet another configuration API, this time using DataFixerUpper.",
+  "authors"      : ["deirn"],
+  "contact"      : {
+    "homepage": "https://github.com/badasintended/codecs-config",
+    "sources" : "https://github.com/badasintended/codecs-config",
+    "issues"  : "https://github.com/badasintended/codecs-config/issues"
+  },
+  "license"      : "Apache-2.0",
+  "icon"         : "assets/codecs-config/icon.png"
+}

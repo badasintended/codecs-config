@@ -1,0 +1,27 @@
+item = "minecraft:diamond"
+int = 245
+double = 1280.3
+
+#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+[stack]
+id = "minecraft:item_frame"
+Count = 2
+
+#ajjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+[nested]
+string_list = ["afefea", "fafegwh", "fahofie", "afa"]
+
+#saaaaaaaaaaaannnnnnnnneaeeeeeeeeeeajjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+[[nested.stack_list]]
+id = "minecraft:creeper_head"
+Count = 22
+
+#kadejflenlfkasm
+[[nested.stack_list]]
+id = "minecraft:beacon"
+Count = 8
+
+[nested.map]
+k1 = "v1"#kadejflenlfkasm
+k2 = "v2"#kadejflenlfkasm
+

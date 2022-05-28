@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id"           : "codecs-config-testmod",
+  "version"      : "1",
+
+  "entrypoints"  : {
+    "main": ["lol.bai.codecs.config.mod.test.ConfigTests"]
+  }
+}

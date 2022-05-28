@@ -1,0 +1,31 @@
+plugins {
+    id "fabric-loom" version "0.12-SNAPSHOT" apply false
+    id "java-library"
+    id "maven-publish"
+}
+
+version = System.getenv("CODECS_CONFIG_VERSION") ?: "local"
+
+allprojects {
+    apply plugin: "java-library"
+    apply plugin: "maven-publish"
+
+    archivesBaseName = project.name
+    version = project.mod_version
+    group = project.maven_group
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    java {
+        withSourcesJar()
+    }
+}
+
+sourceSets {
+    [main, test].forEach {
+        it.java.srcDirs = []
+        it.resources.srcDirs = []
+    }
+}
