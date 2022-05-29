@@ -12,11 +12,11 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.MapLike;
 
-public class ObjectOps implements DynamicOps<Object> {
+public final class ObjectOps implements DynamicOps<Object> {
 
     public static final ObjectOps INSTANCE = new ObjectOps();
 
-    protected ObjectOps() {
+    private ObjectOps() {
     }
 
     @Override

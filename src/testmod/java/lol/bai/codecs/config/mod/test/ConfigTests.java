@@ -34,7 +34,7 @@ public class ConfigTests implements ModInitializer {
         .build();
 
     private static final ConfigHolder<Config> TOML_CONFIG = ConfigHolder.builder(Config.CODEC)
-        .format(TomlConfigFormat.DEFAULT)
+        .format(TomlConfigFormat.INSTANCE)
         .path(FabricLoader.getInstance().getConfigDir().resolve("codecs-config/test.toml"))
         .defaultStream(() -> ConfigTests.class.getResourceAsStream("/default_config/test.toml"))
         .build();

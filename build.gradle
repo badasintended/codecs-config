@@ -1,16 +1,21 @@
 plugins {
     id "fabric-loom" version "0.12-SNAPSHOT"
+    id "com.github.johnrengelman.shadow" version "7.1.2"
     id "maven-publish"
 }
 
 version = System.getenv("CODECS_CONFIG_VERSION") ?: "local"
 
 archivesBaseName = project.name
-version = project.mod_version
 group = project.maven_group
 
 repositories {
     maven { url "https://maven.bai.lol" }
+    maven { url "https://jitpack.io" }
+}
+
+configurations {
+    shadow
 }
 
 dependencies {
@@ -18,8 +23,9 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    api "com.moandjiezana.toml:toml4j:${project.toml4j_version}"
-    include "com.moandjiezana.toml:toml4j:${project.toml4j_version}"
+    modCompileOnly "com.github.TheElectronWill:TOML-javalib:v${project.toml_javalib_version}"
+    modLocalRuntime "com.github.TheElectronWill:TOML-javalib:v${project.toml_javalib_version}"
+    shadow "com.github.TheElectronWill:TOML-javalib:v${project.toml_javalib_version}"
 
     modCompileOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modLocalRuntime "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
@@ -48,4 +54,20 @@ processResources {
     filesMatching("fabric.mod.json") {
         expand "version": project.version
     }
+}
+
+shadowJar {
+    dependsOn jar
+    configurations = [project.configurations.shadow]
+    archiveClassifier.set("dev-shadow")
+    destinationDir file("${buildDir}/devlibs")
+
+    minimize()
+    relocate("com.electronwill.toml", "lol.bai.codecs.config.impl.shadow.toml")
+}
+
+remapJar {
+    dependsOn shadowJar
+    inputFile.set shadowJar.archiveFile
+    archiveClassifier.set null
 }
