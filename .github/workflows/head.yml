@@ -29,5 +29,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: codecs-config-${{ steps.vars.outputs.git_hash }}
-          path: "./*/build/libs/**.jar"
+          path: "./build/libs/**.jar"
       - run: ./gradlew --stop
